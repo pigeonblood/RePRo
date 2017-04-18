@@ -4,7 +4,6 @@
 #include <FFT.h> 
 #include <math.h>
 #include <avr/pgmspace.h>
-unsigned short Temp[9];
 //MIDI69: ラ, FING_STEP[9]
 const PROGMEM unsigned short FING_STEP[27][9] = {
   {LOW,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH},
@@ -65,9 +64,9 @@ void loop() {
   fft_mag_log();
   sei();
   int n = GetMIDITone(fft_log_out) - 60;
-  Play(FING_STEP[n]);
-  for(int i = 0; i < 9; i++){
-    Temp[i] = FING_STEP[n][i];
+  if(!(n < 0 || n > 27))
+  {
+    Play(FING_STEP[n]);
   }
 }
 int GetMIDITone(int in){
