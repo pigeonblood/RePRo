@@ -9,5 +9,9 @@ void setup()
 
 void loop(){
     int val = analogRead(AUD_IN);
-    digitalWrite(AUD_PIN, (val > IN_MIN_VALUE)); //C言語では、比較演算子は1または0をint値で返す。
+    if(val > IN_MIN_VALUE || -val > IN_MIN_VALUE){
+        digitalWrite(AIR_PIN, HIGH);
+    }else{
+        digitalWrite(AIR_PIN,LOW);
+    }
 }
