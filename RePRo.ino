@@ -35,9 +35,8 @@ const PROGMEM unsigned short FING_STEP[27][9] = {
   {HIGH,HIGH,HIGH,LOW,HIGH,HIGH,LOW,HIGH,LOW}};
 
 void setup() {
-  Serial.begin(115200);
-  for(int i = 0; i < 9; i++){
-    pinMode(i + 1, OUTPUT);
+  for(int i = 1; i < 10; i++){
+    pinMode(i , OUTPUT);
   }
   TIMSK0 = 0;
   ADCSRA = 0xe5;
